@@ -1,6 +1,6 @@
 "use client";
 import { FormData } from "@/app/types/blog";
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import ReactTextareaAutosize from "react-textarea-autosize";
 
 const inputClass =
@@ -11,12 +11,20 @@ const FormNewPost = () => {
     title: "",
     content: "",
   });
-  const handleChange=(e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
-e.preventDefault()
-const {name, value}=e.target;
-  }
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
-    <form className="max-w-md mx-auto p-4">
+    <form className="max-w-md mx-auto p-4" onSubmit={handleSubmit}>
       <div className="mb-4">
         <input
           type="text"
@@ -37,7 +45,7 @@ const {name, value}=e.target;
           onChange={handleChange}
         />
       </div>
-      <button className="mb-4 bg-blue-400 px-3 py-4 w-full rounded-md text-white text-xl">
+      <button className="mb-4 bg-blue-500 px-3 py-4 w-full rounded-md text-white text-xl">
         Add blog{" "}
       </button>
     </form>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
+
 const Header = () => {
   return (
     <header className=" bg-blue-500 p-4">
@@ -10,11 +11,8 @@ const Header = () => {
         </Link>
         <ul className="flex space-x-4">
           <li>
-            <Link
-              href="/blogs"
-              className="text-white hover:underline"
-            >
-        Blogs
+          <Link href='/blogs' className='text-white hover:underline'>
+              Blogs
             </Link>
           </li>
           <li>
